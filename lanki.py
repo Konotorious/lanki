@@ -69,7 +69,6 @@ def clozer(f):
     for sent in doc.sents:
         cn = 1
         consecutive = 0
-        #output = doc.text.split(' ')
         output = []
         for i, token in enumerate(sent):
             if not token.is_alpha:
@@ -83,7 +82,6 @@ def clozer(f):
                     clozed_token_text = dress_brackets(token.text, tagNamer(token),cn)
                 output.append(clozed_token_text)
                 consecutive = 1
-                #cn += 1
             else:
                 output.append(token.text)
                 #if token.pos_ not in ["ADP"]:
@@ -94,7 +92,7 @@ def clozer(f):
         
         yield(post_process(output))
 
-def main(): #(input_f, output_f, **kwargs):
+def main(): 
     parser = argparse.ArgumentParser()
     parser.add_argument('files', nargs="*")
     args = parser.parse_args()
